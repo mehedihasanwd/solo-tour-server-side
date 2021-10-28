@@ -45,6 +45,11 @@ app.get("/", (req, res) => {
   res.send("'Solo Tour' server side running");
 });
 
+// Services Route
+app.get("/services", (req, res) => {
+  res.send("This is Services");
+});
+
 // Listening to the port
 app.listen(port, () => {
   console.log("Listening to port: ", port);
