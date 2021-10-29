@@ -28,12 +28,12 @@ async function run() {
     const database = client.db("soloTour");
     const tourCollection = database.collection("tours");
 
-    const doc = {
-      name: "Solo Tour",
-      email: "solotour@gmail.com",
-    };
-
-    const result = await tourCollection.insertOne(doc);
+    // GET Tours API
+    app.get("/tours", async (req, res) => {
+      const cursor = tourCollection.find({});
+      const tours = await cursor.toArray();
+      res.send(tours);
+    });
   } finally {
     // await client.close();
   }
