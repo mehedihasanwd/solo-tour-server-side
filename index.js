@@ -34,6 +34,12 @@ async function run() {
       const tours = await cursor.toArray();
       res.send(tours);
     });
+
+    // POST Tours API
+    app.post("/tours", async (req, res) => {
+      console.log("Hit the post api");
+      res.send("Post Hitted");
+    });
   } finally {
     // await client.close();
   }
@@ -43,11 +49,6 @@ run().catch(console.dir);
 // Default Route
 app.get("/", (req, res) => {
   res.send("'Solo Tour' server side running");
-});
-
-// Services Route
-app.get("/services", (req, res) => {
-  res.send("This is Services");
 });
 
 // Listening to the port
