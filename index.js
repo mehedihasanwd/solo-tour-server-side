@@ -35,6 +35,14 @@ async function run() {
       res.send(tours);
     });
 
+    // GET Specific Tour API
+    app.get("/tours/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const tour = await tourCollection.findOne(query);
+      res.json(tour);
+    });
+
     // POST Tours API
     app.post("/tours", async (req, res) => {
       const tour = req.body;
