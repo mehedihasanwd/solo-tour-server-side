@@ -61,6 +61,14 @@ async function run() {
       res.send(userOrder);
     });
 
+    // Delete Specific Tour API
+    app.delete("/orders/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const order = await tourCollection.deleteOne(query);
+      res.json(order);
+    });
+
     // All Orders API - GET
     app.get("/allorders", async (req, res) => {
       const cursor = orderCollection.find({});
